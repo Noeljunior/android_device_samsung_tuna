@@ -28,9 +28,6 @@ on init
     # Try to boost the boot time
     write /sys/block/mmcblk0/queue/scheduler noop
 
-    # Reduce brightness during boot_completed
-    write /sys/class/backlight/s6e8aa0/brightness 64
-
     # Some more CPU juice during boot_completed
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 20000
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 40
@@ -125,6 +122,9 @@ on fs
 
     # backlight
     chown system system /sys/class/backlight/s6e8aa0/brightness
+
+    # Reduce brightness during boot
+    write /sys/class/backlight/s6e8aa0/brightness 64
 
     # leds
     chown system system /dev/an30259a_leds
