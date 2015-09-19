@@ -184,11 +184,18 @@ ADDITIONAL_BUILD_PROPERTIES += \
 	ro.config.max_starting_bg=8 \
 	ro.sys.fw.bg_apps_limit=16
 
+# Keep dialer and keyboard in memory
+ADDITIONAL_BUILD_PROPERTIES += \
+	ro.config.low_ram=true \
+	persist.sys.force_highendgfx=true \
+	dalvik.vm.jit.codecachesize=0 \
+	config.disable_atlas=true \
+	ro.config.max_starting_bg=8 \
+	ro.sys.fw.bg_apps_limit=16
+
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.opengles.version=131072 \
-	ro.sf.lcd_density=320 \
-	ro.hwui.disable_scissor_opt=true \
-	debug.hwui.render_dirty_regions=false
+	sys.keep_app_1=com.android.dialer \
+	sys.keep_app_2=com.android.inputmethod.latin
 
 # GPU producer to CPU consumer not supported
 PRODUCT_PROPERTY_OVERRIDES += \
