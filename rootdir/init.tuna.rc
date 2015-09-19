@@ -25,6 +25,9 @@ on init
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 
+    # Try to boost the boot time
+    write /sys/block/mmcblk0/queue/scheduler noop
+
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
@@ -266,6 +269,11 @@ service battery_charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
+
+
+on property:sys.boot_completed=1
+    # Get the default scheduler again
+    write /sys/block/mmcblk0/queue/scheduler cfq
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
 on property:ro.debuggable=1
