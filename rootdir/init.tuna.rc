@@ -31,6 +31,16 @@ on init
     # Reduce brightness during boot_completed
     write /sys/class/backlight/s6e8aa0/brightness 64
 
+    # Some more CPU juice during boot_completed
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 40
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1200000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 2500000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 512000000
+
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
@@ -280,6 +290,16 @@ on property:sys.boot_completed=1
 
     # Increase a bit the brightness after boot completed
     write /sys/class/backlight/s6e8aa0/brightness 128
+
+    # Restore the extra boot juice
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 50000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 66
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 920000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 1000000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
 on property:ro.debuggable=1
