@@ -28,6 +28,9 @@ on init
     # Try to boost the boot time
     write /sys/block/mmcblk0/queue/scheduler noop
 
+    # Reduce brightness during boot_completed
+    write /sys/class/backlight/s6e8aa0/brightness 64
+
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
@@ -274,6 +277,9 @@ service battery_charger /sbin/healthd -c
 on property:sys.boot_completed=1
     # Get the default scheduler again
     write /sys/block/mmcblk0/queue/scheduler cfq
+
+    # Increase a bit the brightness after boot completed
+    write /sys/class/backlight/s6e8aa0/brightness 128
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
 on property:ro.debuggable=1
