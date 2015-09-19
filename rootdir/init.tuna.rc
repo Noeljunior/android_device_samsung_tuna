@@ -36,6 +36,8 @@ on init
     write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 2500000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "40 700000:50 920000:60 1200000:75"
+    write /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq 1200000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 512000000
 
 on post-fs-data
@@ -303,6 +305,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 1000000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "50 700000:60 920000:66 1200000:80"
+    write /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq 1200000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
@@ -319,6 +323,8 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 100000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 40000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "66 700000:75 920000:85 1200000:95"
+    write /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq 920000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 307200000
 
 # Balanced
@@ -330,6 +336,8 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 1000000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "50 700000:60 920000:66 1200000:80"
+    write /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq 1200000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
 
 # Performance
@@ -341,4 +349,6 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 2500000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "40 700000:50 920000:60 1200000:75"
+    write /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq 1200000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 512000000
