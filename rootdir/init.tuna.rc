@@ -288,15 +288,33 @@ on property:ro.debuggable=1
 # CyanogenMod Performance Profiles
 # Powersave
 on property:sys.perf.profile=0
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 250000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 700000
-    write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 307200000
 
 # Balanced
 on property:sys.perf.profile=1
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 50000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 66
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 920000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 1000000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
 
 # Performance
 on property:sys.perf.profile=2
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 920000
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 40
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1200000
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 2500000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 512000000
