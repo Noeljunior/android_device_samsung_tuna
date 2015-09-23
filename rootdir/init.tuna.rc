@@ -282,6 +282,8 @@ on property:sys.boot_completed=1
     # Increase a bit the brightness after boot completed
     write /sys/class/backlight/s6e8aa0/brightness 128
 
+    # Decrease a bit vibrator
+    write /sys/vibrator/pwmvalue 60
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
 on property:ro.debuggable=1
