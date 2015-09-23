@@ -190,6 +190,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hwui.disable_scissor_opt=true \
 	debug.hwui.render_dirty_regions=false
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	sys.keep_app_1=com.android.dialer \
+	sys.keep_app_2=com.android.inputmethod.latin
+
 # GPU producer to CPU consumer not supported
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bq.gpu_to_cpu_unsupported=1
