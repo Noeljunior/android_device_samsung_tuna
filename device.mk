@@ -202,6 +202,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
+# Hide low_ram flag from Google Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+
 # Disable VFR support for encoders
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.vfr.enable=0
